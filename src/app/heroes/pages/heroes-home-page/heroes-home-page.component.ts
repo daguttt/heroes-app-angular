@@ -4,13 +4,15 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-heroes-home-page',
   templateUrl: './heroes-home-page.component.html',
   styles: [
-  ]
+    `
+      .container {
+        padding: 10px;
+      }
+    `,
+  ],
 })
 export class HeroesHomePageComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

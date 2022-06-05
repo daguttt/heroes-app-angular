@@ -1,12 +1,31 @@
 <mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav position="end">
-    <h1>I'm the sidenav</h1>
+  <mat-sidenav #sidenav mode="push">
+    <mat-toolbar color="primary"> Menu </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="./list" (click)="sidenav.close()">
+        <mat-icon matListIcon>label</mat-icon>
+        Listado de héroes
+      </a>
+      <a mat-list-item routerLink="./add" (click)="sidenav.close()">
+        <mat-icon matListIcon>add</mat-icon>
+        Añadir héroe
+      </a>
+      <a mat-list-item routerLink="./search" (click)="sidenav.close()">
+        <mat-icon matListIcon>search</mat-icon>
+        Buscar héroe
+      </a>
+    </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
       <button mat-icon-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
+      <div class="flex-spacer"></div>
+      <button mat-raised-button>Logout</button>
     </mat-toolbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
