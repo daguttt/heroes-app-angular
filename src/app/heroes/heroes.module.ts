@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MaterialModule } from '../material/material.module';
 import { HeroesRoutingModule } from './heroes-routing.module';
 
 import { AddHeroPageComponent } from './pages/add-hero-page/add-hero-page.component';
@@ -17,6 +20,11 @@ import { HeroesListPageComponent } from './pages/heroes-list-page/heroes-list-pa
     HeroesHomePageComponent,
     HeroesListPageComponent,
   ],
-  imports: [CommonModule, HeroesRoutingModule],
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MaterialModule,
+    HeroesRoutingModule,
+  ],
 })
 export class HeroesModule {}
