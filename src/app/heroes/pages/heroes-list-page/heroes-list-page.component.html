@@ -1,6 +1,30 @@
-<p>heroes-list-page works!</p>
-<ul>
-  <li *ngFor="let hero of heroes">
-    {{ hero.superhero }}
-  </li>
-</ul>
+<h2>Listado de Héroes</h2>
+<mat-divider></mat-divider>
+
+<div fxLayout="row wrap">
+  <div fxFlex *ngFor="let hero of heroes">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          {{ hero.superhero }}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{ hero.alter_ego }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="assets/heroes/{{ hero.id }}.jpg" />
+      <mat-card-content>
+        <h3>{{ hero.publisher }}</h3>
+        <p>
+          <strong>Primera aparición</strong> {{ hero.first_appearance }}
+          <br />
+          <strong>Personajes:</strong> {{ hero.characters }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="warn">Leer más...</button>
+        <button mat-button>Editar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
