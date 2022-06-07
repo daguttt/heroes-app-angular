@@ -4,7 +4,13 @@ import { Hero } from '../../interfaces/heroes.interface';
 @Component({
   selector: 'app-hero-card',
   templateUrl: './hero-card.component.html',
-  styles: [],
+  styles: [
+    `
+      mat-card {
+        margin-bottom: 20px;
+      }
+    `,
+  ],
 })
 export class HeroCardComponent {
   @Input() public hero!: Hero;

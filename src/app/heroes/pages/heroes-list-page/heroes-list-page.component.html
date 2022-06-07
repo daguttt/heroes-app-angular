@@ -1,7 +1,13 @@
 <h2>Listado de Héroes</h2>
 <mat-divider></mat-divider>
 <br />
-<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px">
+<div
+  fxLayout="row wrap"
+  fxLayout.xs="column"
+  fxLayoutGap="20px"
+  fxLayoutAlign="center"
+  fxLayoutAlign.gt-md="start"
+>
   <div fxFlex="20" fxFlex.sm="30" fxFlex.gt-md="15" *ngFor="let hero of heroes">
     <app-hero-card [hero]="hero"></app-hero-card>
   </div>
