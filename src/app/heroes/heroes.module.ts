@@ -11,6 +11,7 @@ import { SearchHeroesPageComponent } from './pages/search-heroes-page/search-her
 import { SingleHeroPageComponent } from './pages/single-hero-page/single-hero-page.component';
 import { HeroesHomePageComponent } from './pages/heroes-home-page/heroes-home-page.component';
 import { HeroesListPageComponent } from './pages/heroes-list-page/heroes-list-page.component';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeroesListPageComponent } from './pages/heroes-list-page/heroes-list-pa
     SingleHeroPageComponent,
     HeroesHomePageComponent,
     HeroesListPageComponent,
+    HeroCardComponent,
   ],
   imports: [
     CommonModule,
