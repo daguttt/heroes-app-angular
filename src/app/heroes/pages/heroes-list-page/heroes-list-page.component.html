@@ -1,8 +1,8 @@
 <h2>Listado de Héroes</h2>
 <mat-divider></mat-divider>
-
-<div fxLayout="row wrap">
-  <div fxFlex *ngFor="let hero of heroes">
+<br />
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px">
+  <div fxFlex="20" fxFlex.sm="30" fxFlex.gt-md="15" *ngFor="let hero of heroes">
     <mat-card>
       <mat-card-header>
         <mat-card-title>

@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styles: [
     `
       .container {
-        padding: 10px;
+        padding: 20px;
       }
     `,
   ],
