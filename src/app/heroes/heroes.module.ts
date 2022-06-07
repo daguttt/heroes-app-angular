@@ -13,6 +13,8 @@ import { HeroesHomePageComponent } from './pages/heroes-home-page/heroes-home-pa
 import { HeroesListPageComponent } from './pages/heroes-list-page/heroes-list-page.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
+import { HeroImagePipe } from './pipes/image.pipe';
+
 @NgModule({
   declarations: [
     AddHeroPageComponent,
@@ -21,6 +23,8 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
     HeroesHomePageComponent,
     HeroesListPageComponent,
     HeroCardComponent,
+    // Pipes
+    HeroImagePipe,
   ],
   imports: [
     CommonModule,
