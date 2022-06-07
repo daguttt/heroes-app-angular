@@ -1,1 +1,9 @@
-<p>single-hero-page works!</p>
+<mat-grid-list cols="1" *ngIf="!hero; else heroContent">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<ng-template #heroContent>
+  <pre>{{ hero | json }}</pre>
+</ng-template>
