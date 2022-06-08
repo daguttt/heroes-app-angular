@@ -14,6 +14,7 @@ import { HeroesListPageComponent } from './pages/heroes-list-page/heroes-list-pa
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
 import { HeroImagePipe } from './pipes/image.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HeroImagePipe } from './pipes/image.pipe';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     FlexLayoutModule,
     MaterialModule,
     HeroesRoutingModule,

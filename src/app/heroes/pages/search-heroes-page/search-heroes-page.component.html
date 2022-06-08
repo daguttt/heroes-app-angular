@@ -1,1 +1,17 @@
-<p>search-heroes-page works!</p>
+<mat-form-field appearance="fill">
+  <mat-label>Search Hero</mat-label>
+  <input
+    type="text"
+    placeholder="Pick one"
+    aria-label="Search Hero"
+    matInput
+    [matAutocomplete]="auto"
+    [(ngModel)]="search"
+    (input)="onSearch()"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let hero of heroes" [value]="hero">
+      {{ hero.superhero }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
