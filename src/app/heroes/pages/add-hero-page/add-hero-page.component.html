@@ -1,1 +1,54 @@
-<p>add-hero-page works!</p>
+<h1>Nuevo Héroe <small>(Superhero name)</small></h1>
+
+<section fxLayout="row" fxLayoutGap="40px">
+  <article fxFlex="50" fxLayout="columm wrap">
+    <div fxLayout="row" fxLayoutGap="40px" fxFlex="100">
+      <!-- Superhero -->
+      <mat-form-field fxFlex="50">
+        <mat-label>Super Héroe</mat-label>
+        <input type="text" matInput required />
+      </mat-form-field>
+      <!-- Alter ego -->
+      <mat-form-field fxFlex="50">
+        <mat-label>Alter Ego</mat-label>
+        <input type="text" matInput required />
+      </mat-form-field>
+    </div>
+    <!-- First appearance -->
+    <mat-form-field fxFlex="100">
+      <mat-label>Primera Aparición</mat-label>
+      <input type="text" matInput required />
+    </mat-form-field>
+    <!-- Characters -->
+    <mat-form-field fxFlex="100">
+      <mat-label>Personajes</mat-label>
+      <input type="text" matInput required />
+    </mat-form-field>
+    <!-- Attemp with Angular Material Radio Button -->
+    <!-- <div>
+      <label>Creador: </label>
+      <mat-radio-group aria-label="Creador">
+        <mat-radio-button value="DC Comics">DC Comics</mat-radio-button>
+        <mat-radio-button value="Marvel Comics">Marvel Comics</mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+    <!-- Creator -->
+    <mat-form-field fxFlex="100">
+      <mat-label>Creador</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let publisher of publisherList" [value]="publisher">
+          {{ publisher }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- Photo URL -->
+    <mat-form-field fxFlex="100">
+      <mat-label>Imagén del personaje (URL)</mat-label>
+      <input type="url" matInput required />
+    </mat-form-field>
+  </article>
+  <article fxFlex="50">
+    <!-- TODO: Bind property -->
+    <img src="hero | imagen" alt="hero.superhero" />
+  </article>
+</section>
