@@ -1,22 +1,27 @@
-<mat-form-field appearance="fill">
-  <mat-label>Search Hero</mat-label>
-  <input
-    type="text"
-    placeholder="Pick one"
-    aria-label="Search Hero"
-    matInput
-    [matAutocomplete]="auto"
-    [(ngModel)]="currentSearch"
-    (input)="onInput()"
-  />
-  <mat-autocomplete
-    #auto="matAutocomplete"
-    (optionSelected)="searchHero($event)"
-  >
-    <mat-option *ngFor="let hero of heroesSuggestions" [value]="hero">
-      {{ hero.superhero }}
-    </mat-option>
-  </mat-autocomplete>
-</mat-form-field>
+<section fxLayout="column">
+  <mat-form-field appearance="fill">
+    <mat-label>Search Hero</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one"
+      aria-label="Search Hero"
+      matInput
+      [matAutocomplete]="auto"
+      [(ngModel)]="currentSearch"
+      (input)="onInput()"
+    />
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="searchHero($event)"
+    >
+      <mat-option *ngFor="let hero of heroesSuggestions" [value]="hero">
+        {{ hero.superhero }}
+      </mat-option>
+      <mat-option *ngIf="!heroesSuggestions.length && currentSearch" value="">
+        No sé encontró nada con el termino "{{ currentSearch }}"
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</section>
 
 <pre>{{ selectedhero | json }}</pre>
