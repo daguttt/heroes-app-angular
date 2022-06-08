@@ -6,12 +6,17 @@
     aria-label="Search Hero"
     matInput
     [matAutocomplete]="auto"
-    [(ngModel)]="search"
-    (input)="onSearch()"
+    [(ngModel)]="currentSearch"
+    (input)="onInput()"
   />
-  <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let hero of heroes" [value]="hero">
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    (optionSelected)="searchHero($event)"
+  >
+    <mat-option *ngFor="let hero of heroesSuggestions" [value]="hero">
       {{ hero.superhero }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
+
+<pre>{{ selectedhero | json }}</pre>

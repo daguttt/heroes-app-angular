@@ -16,4 +16,9 @@ export class HeroesService {
   getHeroById(id: string): Observable<Hero> {
     return this.http.get<Hero>(`${this.serverUrl}/heroes/${id}`);
   }
+  getHeroesSuggestions(currentSearch: string): Observable<Hero[]> {
+    return this.http.get<Hero[]>(
+      `${this.serverUrl}/heroes?q=${currentSearch}&_limit=6`
+    );
+  }
 }
