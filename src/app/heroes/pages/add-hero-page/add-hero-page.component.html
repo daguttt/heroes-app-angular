@@ -1,28 +1,43 @@
 <h1>Nuevo Héroe <small>(Superhero name)</small></h1>
 
-<section fxLayout="row" fxLayoutGap="40px">
+<section fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
   <article fxFlex="50" fxLayout="columm wrap">
-    <div fxLayout="row" fxLayoutGap="40px" fxFlex="100">
+    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxFlex="100">
       <!-- Superhero -->
       <mat-form-field fxFlex="50">
         <mat-label>Super Héroe</mat-label>
-        <input type="text" matInput required />
+        <input
+          type="text"
+          matInput
+          required
+          [(ngModel)]="heroToAdd.superhero"
+        />
       </mat-form-field>
       <!-- Alter ego -->
       <mat-form-field fxFlex="50">
         <mat-label>Alter Ego</mat-label>
-        <input type="text" matInput required />
+        <input
+          type="text"
+          matInput
+          required
+          [(ngModel)]="heroToAdd.alter_ego"
+        />
       </mat-form-field>
     </div>
     <!-- First appearance -->
     <mat-form-field fxFlex="100">
       <mat-label>Primera Aparición</mat-label>
-      <input type="text" matInput required />
+      <input
+        type="text"
+        matInput
+        required
+        [(ngModel)]="heroToAdd.first_appearance"
+      />
     </mat-form-field>
     <!-- Characters -->
     <mat-form-field fxFlex="100">
       <mat-label>Personajes</mat-label>
-      <input type="text" matInput required />
+      <input type="text" matInput required [(ngModel)]="heroToAdd.characters" />
     </mat-form-field>
     <!-- Attemp with Angular Material Radio Button -->
     <!-- <div>
@@ -35,7 +50,7 @@
     <!-- Creator -->
     <mat-form-field fxFlex="100">
       <mat-label>Creador</mat-label>
-      <mat-select>
+      <mat-select required [(ngModel)]="heroToAdd.publisher">
         <mat-option *ngFor="let publisher of publisherList" [value]="publisher">
           {{ publisher }}
         </mat-option>
@@ -44,11 +59,16 @@
     <!-- Photo URL -->
     <mat-form-field fxFlex="100">
       <mat-label>Imagén del personaje (URL)</mat-label>
-      <input type="url" matInput required />
+      <input type="url" matInput required [(ngModel)]="heroToAdd.alt_img" />
     </mat-form-field>
+    <!-- Save/Edit Button -->
+    <button fxFlex="100" mat-raised-button (click)="addHero()">
+      <mat-icon>add_circle</mat-icon>
+      Guardar
+    </button>
   </article>
   <article fxFlex="50">
     <!-- TODO: Bind property -->
-    <img src="hero | imagen" alt="hero.superhero" />
+    <img src="hero | imagen" alt="hero.superhero" fxFlex="100" />
   </article>
 </section>
