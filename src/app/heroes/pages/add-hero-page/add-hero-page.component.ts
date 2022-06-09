@@ -13,6 +13,10 @@ import { HeroesService } from '../../services/heroes.service';
       mat-radio-button {
         margin: 0 5px;
       }
+      img {
+        width: 100%;
+        border-radius: 5px;
+      }
     `,
   ],
   // styles: [],

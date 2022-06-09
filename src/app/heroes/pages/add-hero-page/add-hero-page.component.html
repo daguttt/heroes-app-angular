@@ -3,7 +3,7 @@
 </h1>
 
 <section fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-  <article fxFlex="50" fxLayout="columm wrap">
+  <article fxFlex="50" fxLayout="column">
     <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxFlex="100">
       <!-- Superhero -->
       <mat-form-field fxFlex="50">
@@ -54,13 +54,13 @@
       <input type="url" matInput required [(ngModel)]="hero.alt_img" />
     </mat-form-field>
     <!-- Save/Edit Button -->
-    <button mat-raised-button (click)="addHero()" fxFlex="100">
+    <button mat-raised-button (click)="addHero()">
       <mat-icon>{{ hero.superhero ? "edit" : "add_circle" }}</mat-icon>
       <span>{{ hero.superhero ? "Editar" : "Guardar" }}</span>
     </button>
   </article>
   <article fxFlex="50">
     <!-- TODO: Bind property -->
-    <img [src]="hero | heroImage" [alt]="hero.superhero" fxFlex="100" />
+    <img [src]="hero | heroImage" [alt]="hero.superhero" />
   </article>
 </section>
