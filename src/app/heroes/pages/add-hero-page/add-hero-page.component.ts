@@ -31,19 +31,26 @@ export class AddHeroPageComponent implements OnInit {
     alt_img: '',
     alter_ego: '',
   };
+  public isForEditing: boolean = true;
   constructor(
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
   ngOnInit(): void {
-    if (!this.router.url.includes('editar')) return;
+    if (!this.router.url.includes('edit')) {
+      this.isForEditing = false;
+      return;
+    }
+    this.isForEditing = true;
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
       .subscribe((hero) => (this.hero = hero));
   }
   addHero() {
     if (!this.hero.superhero.trim()) return;
+    if (!this.hero.alt_img)
+      return alert('No se puede agregar un héroe sin su imagen');
     this.hero.id
       ? // Edit hero
         this.heroesService.updateHero(this.hero).subscribe(console.log)
