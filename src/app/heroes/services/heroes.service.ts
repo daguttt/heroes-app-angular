@@ -21,7 +21,13 @@ export class HeroesService {
       `${this.serverUrl}/heroes?q=${currentSearch}&_limit=6`
     );
   }
-  addHero(hero: Hero): Observable<Hero> {
-    return this.http.post<Hero>(`${this.serverUrl}/heroes`, hero);
+  addHero(newHero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${this.serverUrl}/heroes`, newHero);
+  }
+  updateHero(heroToUpdate: Hero): Observable<Hero> {
+    return this.http.put<Hero>(
+      `${this.serverUrl}/heroes/${heroToUpdate.id}`,
+      heroToUpdate
+    );
   }
 }
