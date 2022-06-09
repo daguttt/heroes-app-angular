@@ -37,7 +37,7 @@ export class AddHeroPageComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    // TODO: Remove error when adding new hero
+    if (!this.router.url.includes('editar')) return;
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
       .subscribe((hero) => (this.hero = hero));
