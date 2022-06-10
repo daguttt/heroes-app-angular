@@ -30,4 +30,7 @@ export class HeroesService {
       heroToUpdate
     );
   }
+  removeHero(heroId: string): Observable<any> {
+    return this.http.delete<any>(`${this.serverUrl}/heroes/${heroId}`);
+  }
 }

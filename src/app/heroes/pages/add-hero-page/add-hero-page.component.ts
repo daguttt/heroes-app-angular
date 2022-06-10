@@ -69,4 +69,9 @@ export class AddHeroPageComponent implements OnInit {
         this.heroesService.addHero(this.hero).subscribe(console.log);
     this.router.navigate(['/heroes', this.hero.id]);
   }
+  removeHero() {
+    this.heroesService.removeHero(this.hero.id!).subscribe((res) => {
+      this.router.navigate(['/heroes']);
+    });
+  }
 }

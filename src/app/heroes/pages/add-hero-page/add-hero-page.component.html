@@ -53,11 +53,24 @@
       <mat-label>Imagén del personaje (URL)</mat-label>
       <input type="url" matInput required [(ngModel)]="hero.alt_img" />
     </mat-form-field>
-    <!-- Save/Edit Button -->
-    <button mat-raised-button (click)="addHero()">
-      <mat-icon>{{ isForEditing ? "edit" : "add_circle" }}</mat-icon>
-      <span>{{ isForEditing ? "Editar" : "Guardar" }}</span>
-    </button>
+    <div fxLayout="row" fxLayoutGap="1vw">
+      <!-- Save/Edit Button -->
+      <button mat-raised-button (click)="addHero()" fxFlex>
+        <mat-icon>{{ isForEditing ? "edit" : "add_circle" }}</mat-icon>
+        <span>{{ isForEditing ? "Editar" : "Guardar" }}</span>
+      </button>
+      <!-- Remove Button -->
+      <button
+        *ngIf="hero.id"
+        mat-raised-button
+        (click)="removeHero()"
+        color="warn"
+        fxFlex
+      >
+        <mat-icon>delete</mat-icon>
+        Eliminar
+      </button>
+    </div>
   </article>
   <article fxFlex="50" fxLayout="row" fxLayoutAlign="center">
     <!-- TODO: Bind property -->
