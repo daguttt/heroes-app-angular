@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/heroes.interface';
@@ -44,34 +45,43 @@ export class AddHeroPageComponent implements OnInit {
   };
   public isForEditing: boolean = true;
   constructor(
-    private heroesService: HeroesService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+    private _heroesService: HeroesService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
+    private _snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
-    if (!this.router.url.includes('edit')) {
+    if (!this._router.url.includes('edit')) {
       this.isForEditing = false;
       return;
     }
     this.isForEditing = true;
-    this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.heroesService.getHeroById(id)))
+    this._activatedRoute.params
+      .pipe(switchMap(({ id }) => this._heroesService.getHeroById(id)))
       .subscribe((hero) => (this.hero = hero));
   }
   addHero() {
     if (!this.hero.superhero.trim()) return;
     if (!this.hero.alt_img)
       return alert('No se puede agregar un héroe sin su imagen');
-    this.hero.id
-      ? // Edit hero
-        this.heroesService.updateHero(this.hero).subscribe(console.log)
-      : // Insert new hero
-        this.heroesService.addHero(this.hero).subscribe(console.log);
-    this.router.navigate(['/heroes', this.hero.id]);
+    if (!this.hero.id) {
+      this._heroesService.addHero(this.hero).subscribe(console.log);
+      this.showSnackBar(`"${this.hero.superhero}" se ha añadido con éxito.`);
+      this._router.navigate(['/heroes']);
+      return;
+    }
+    this._heroesService.updateHero(this.hero).subscribe(console.log);
+    this.showSnackBar(`"${this.hero.superhero}" se ha editado con éxito.`);
+    this._router.navigate(['/heroes', this.hero.id]);
   }
   removeHero() {
-    this.heroesService.removeHero(this.hero.id!).subscribe((res) => {
-      this.router.navigate(['/heroes']);
+    this._heroesService.removeHero(this.hero.id!).subscribe((res) => {
+      this._router.navigate(['/heroes']);
+    });
+  }
+  showSnackBar(message: string) {
+    this._snackBar.open(message, 'OK!', {
+      duration: 4000,
     });
   }
 }
