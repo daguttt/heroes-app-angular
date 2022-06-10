@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
+import { ConfirmRemoveHeroComponent } from '../../components/confirm-remove-hero/confirm-remove-hero.component';
 import { Hero, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -48,7 +50,8 @@ export class AddHeroPageComponent implements OnInit {
     private _heroesService: HeroesService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private _dialog: MatDialog
   ) {}
   ngOnInit(): void {
     if (!this._router.url.includes('edit')) {
@@ -75,9 +78,10 @@ export class AddHeroPageComponent implements OnInit {
     this._router.navigate(['/heroes', this.hero.id]);
   }
   removeHero() {
-    this._heroesService.removeHero(this.hero.id!).subscribe((res) => {
-      this._router.navigate(['/heroes']);
-    });
+    this._dialog.open(ConfirmRemoveHeroComponent);
+    // this._heroesService.removeHero(this.hero.id!).subscribe((res) => {
+    //   this._router.navigate(['/heroes']);
+    // });
   }
   showSnackBar(message: string) {
     this._snackBar.open(message, 'OK!', {
