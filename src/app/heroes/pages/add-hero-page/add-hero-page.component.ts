@@ -14,8 +14,19 @@ import { HeroesService } from '../../services/heroes.service';
         margin: 0 5px;
       }
       img {
-        width: 100%;
+        height: 50vw;
+        max-height: 700px;
+        aspect-ratio: 9/16;
         border-radius: 5px;
+      }
+      @media screen and (max-width: 599px) {
+        img {
+          object-fit: cover;
+          object-position: 50% 0;
+          height: auto;
+          max-height: auto;
+          width: 100%;
+        }
       }
     `,
   ],
