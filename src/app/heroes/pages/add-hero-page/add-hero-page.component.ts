@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { from, switchMap } from 'rxjs';
 import { ConfirmRemoveHeroComponent } from '../../components/confirm-remove-hero/confirm-remove-hero.component';
 import { Hero, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
@@ -78,10 +78,22 @@ export class AddHeroPageComponent implements OnInit {
     this._router.navigate(['/heroes', this.hero.id]);
   }
   removeHero() {
-    this._dialog.open(ConfirmRemoveHeroComponent);
-    // this._heroesService.removeHero(this.hero.id!).subscribe((res) => {
-    //   this._router.navigate(['/heroes']);
-    // });
+    const openedDialog = this._dialog.open(ConfirmRemoveHeroComponent, {
+      data: { ...this.hero },
+    });
+    openedDialog
+      .afterClosed()
+      .pipe(
+        switchMap((result) =>
+          result ? this._heroesService.removeHero(this.hero.id!) : from(result)
+        )
+      )
+      .subscribe(() => {
+        this.showSnackBar(
+          `"${this.hero.superhero}" ha sido eliminado con éxito`
+        );
+        this._router.navigate(['/heroes']);
+      });
   }
   showSnackBar(message: string) {
     this._snackBar.open(message, 'OK!', {
