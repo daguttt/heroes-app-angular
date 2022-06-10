@@ -63,10 +63,14 @@ export class AddHeroPageComponent implements OnInit {
       .pipe(switchMap(({ id }) => this._heroesService.getHeroById(id)))
       .subscribe((hero) => (this.hero = hero));
   }
+  private getSnackMessageForImage() {
+    return this.isForEditing
+      ? 'No se puede EDITAR un héroe sin NUEVA su imagen'
+      : 'No se puede AÑADIR un héroe sin su imagen';
+  }
   addHero() {
-    if (!this.hero.superhero.trim()) return;
     if (!this.hero.alt_img)
-      return alert('No se puede agregar un héroe sin su imagen');
+      return this.showSnackBar(this.getSnackMessageForImage());
     if (!this.hero.id) {
       this._heroesService.addHero(this.hero).subscribe(console.log);
       this.showSnackBar(`"${this.hero.superhero}" se ha añadido con éxito.`);
