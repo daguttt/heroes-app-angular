@@ -2,22 +2,20 @@
   {{ isForEditing ? "Editar Héroe" : " Añadir Héroe" }}
 </h1>
 
-<section fxLayout="row" fxLayout.xs="column" fxLayoutGap="40px">
-  <article fxFlex="50" fxLayout="column">
-    <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="20" fxFlex="100">
-      <!-- Superhero -->
-      <mat-form-field fxFlex="50">
-        <mat-label>Super Héroe</mat-label>
-        <input type="text" matInput required [(ngModel)]="hero.superhero" />
-      </mat-form-field>
-      <!-- Alter ego -->
-      <mat-form-field fxFlex="50">
-        <mat-label>Alter Ego</mat-label>
-        <input type="text" matInput required [(ngModel)]="hero.alter_ego" />
-      </mat-form-field>
-    </div>
+<section>
+  <article>
+    <!-- Superhero -->
+    <mat-form-field>
+      <mat-label>Super Héroe</mat-label>
+      <input type="text" matInput required [(ngModel)]="hero.superhero" />
+    </mat-form-field>
+    <!-- Alter ego -->
+    <mat-form-field>
+      <mat-label>Alter Ego</mat-label>
+      <input type="text" matInput required [(ngModel)]="hero.alter_ego" />
+    </mat-form-field>
     <!-- First appearance -->
-    <mat-form-field fxFlex="100">
+    <mat-form-field>
       <mat-label>Primera Aparición</mat-label>
       <input
         type="text"
@@ -27,7 +25,7 @@
       />
     </mat-form-field>
     <!-- Characters -->
-    <mat-form-field fxFlex="100">
+    <mat-form-field>
       <mat-label>Personajes</mat-label>
       <input type="text" matInput required [(ngModel)]="hero.characters" />
     </mat-form-field>
@@ -40,7 +38,7 @@
       </mat-radio-group>
     </div> -->
     <!-- Creator -->
-    <mat-form-field fxFlex="100">
+    <mat-form-field>
       <mat-label>Creador</mat-label>
       <mat-select required [(ngModel)]="hero.publisher">
         <mat-option *ngFor="let publisher of publisherList" [value]="publisher">
@@ -49,17 +47,16 @@
       </mat-select>
     </mat-form-field>
     <!-- Photo URL -->
-    <mat-form-field fxFlex="100">
+    <mat-form-field>
       <mat-label>Imagén del personaje (URL)</mat-label>
       <input type="url" matInput required [(ngModel)]="hero.alt_img" />
     </mat-form-field>
-    <div fxLayout="row" fxLayoutGap="1vw">
+    <div>
       <!-- Save/Edit Button -->
       <button
         mat-raised-button
         [disabled]="!hero.superhero"
         (click)="addHero()"
-        fxFlex
       >
         <mat-icon>{{ isForEditing ? "edit" : "add_circle" }}</mat-icon>
         <span>{{ isForEditing ? "Editar" : "Guardar" }}</span>
@@ -70,14 +67,13 @@
         mat-raised-button
         (click)="removeHero()"
         color="warn"
-        fxFlex
       >
         <mat-icon>delete</mat-icon>
         Eliminar
       </button>
     </div>
   </article>
-  <article fxFlex="50" fxLayout="row" fxLayoutAlign="center">
+  <article>
     <!-- TODO: Bind property -->
     <img [src]="hero | heroImage" [alt]="hero.superhero" />
   </article>

@@ -4,9 +4,7 @@
   ¿Está a punto de eliminar a <strong>"{{ hero.superhero }}"</strong> ¿Está
   seguro?
 </p>
-<div fxLayout="row" fxLayoutGap="1vw">
-  <button (click)="remove()" fxFlex mat-raised-button color="warn">
-    Sí, borrar
-  </button>
-  <button (click)="cancel()" fxFlex mat-raised-button>Cancelar</button>
+<div>
+  <button (click)="remove()" mat-raised-button color="warn">Sí, borrar</button>
+  <button (click)="cancel()" mat-raised-button>Cancelar</button>
 </div>

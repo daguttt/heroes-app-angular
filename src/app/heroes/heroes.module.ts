@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { MaterialModule } from '../material/material.module';
 import { HeroesRoutingModule } from './heroes-routing.module';
 
@@ -29,12 +27,6 @@ import { ConfirmRemoveHeroComponent } from './components/confirm-remove-hero/con
     HeroImagePipe,
     ConfirmRemoveHeroComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    FlexLayoutModule,
-    MaterialModule,
-    HeroesRoutingModule,
-  ],
+  imports: [CommonModule, FormsModule, MaterialModule, HeroesRoutingModule],
 })
 export class HeroesModule {}
